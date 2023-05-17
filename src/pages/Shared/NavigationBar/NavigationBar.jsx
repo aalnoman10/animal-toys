@@ -7,12 +7,12 @@ const NavigationBar = () => {
 
     const li = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>All Toys</Link></li>
+        <li><Link to='/all-toys'>All Toys</Link></li>
         {user && <>
-            <li><Link to='/'>My Toys</Link></li>
-            <li><Link to='/'>Add A Toy</Link></li>
+            <li><Link to='/my-toys'>My Toys</Link></li>
+            <li><Link to='/add-a-toy'>Add A Toy</Link></li>
         </>}
-        <li><Link to='/'>Blogs</Link></li>
+        <li><Link to='/blogs'>Blogs</Link></li>
     </>
 
     return (
