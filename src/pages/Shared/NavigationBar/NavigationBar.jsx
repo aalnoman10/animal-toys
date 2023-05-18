@@ -41,7 +41,7 @@ const NavigationBar = () => {
                     </ul>
                 </div>
                 <div className='flex items-center pl-2'>
-                    <img src={logo} className='w-14' alt="" />
+                    <img src={logo} className='w-14 rounded-lg' alt="" />
                     <span className="btn btn-ghost normal-case text-xl p-1">Animal Toy</span>
                 </div>
             </div>
@@ -51,7 +51,7 @@ const NavigationBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <img src={user?.photoURL} className='w-14' title={user?.displayName} alt="User profile" /> : <Link to='login' className='btn btn-ghost normal-case text-xl'>Login</Link>
+                {user ? <img src={user?.photoURL} className='w-14 rounded-full' title={user?.displayName} alt="User profile" /> : <Link to='login' className='btn btn-ghost normal-case text-xl'>Login</Link>
                 }
             </div>
         </div>
