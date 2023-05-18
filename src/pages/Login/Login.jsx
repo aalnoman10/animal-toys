@@ -6,7 +6,7 @@ import { SlLock } from 'react-icons/sl'
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
-    const { setUser, loginUser } = useContext(AuthContext)
+    const { setUser, loginUser, loginWithGoogle } = useContext(AuthContext)
 
     const handleLogin = e => {
         e.preventDefault()
@@ -65,7 +65,7 @@ const Login = () => {
                             <hr className='mt-4' />
                             <h4 className="text-center text-2xl font-semibold">Continue with</h4>
                             <p className="flex justify-center items-center gap-2 py-2">
-                                <button className="btn btn-ghost p-0 px-3"><BsGoogle size={25} /></button>
+                                <button onClick={loginWithGoogle} className="btn btn-ghost p-0 px-3"><BsGoogle size={25} /></button>
                                 <button className="btn btn-ghost p-0 px-3"><BsGithub size={25} /></button>
                                 <button className="btn btn-ghost p-0 px-3"><BsFacebook size={25} /></button>
                             </p>
