@@ -39,7 +39,7 @@ const NavigationBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ? <img src={logo} className='w-14' title={user?.displayName} alt="User profile picture" /> : <Link to='login' className='btn btn-ghost normal-case text-xl'>Login</Link>
+                {user ? <img src={user?.photoURL} className='w-14' title={user?.displayName} alt="User profile" /> : <Link to='login' className='btn btn-ghost normal-case text-xl'>Login</Link>
                 }
             </div>
         </div>

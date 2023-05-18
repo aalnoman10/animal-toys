@@ -4,10 +4,11 @@ import { AiOutlineMail } from 'react-icons/ai'
 import { SlLock } from 'react-icons/sl'
 import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Resister = () => {
 
-    const { user, setUser } = useContext(AuthContext)
+    const { setUser, loginWithEmailAndPassword } = useContext(AuthContext)
 
     const handleResister = e => {
         e.preventDefault()
@@ -19,6 +20,25 @@ const Resister = () => {
         const photo = form.photo.value
 
         console.log(name, email, password, photo);
+
+        loginWithEmailAndPassword(email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                updateProfile(user, {
+                    displayName: name, photoURL: photo
+                })
+                    .then(() => {
+                        console.log("upadteP");
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                setUser(result.user)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     return (
