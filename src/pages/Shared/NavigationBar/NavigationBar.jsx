@@ -5,16 +5,28 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 
 const NavigationBar = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logout, setUser } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                console.log('success');
+                setUser(null)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     const li = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/all-toys'>All Toys</Link></li>
+        <li><Link to='/blogs'>Blogs</Link></li>
         {user && <>
             <li><Link to='/my-toys'>My Toys</Link></li>
             <li><Link to='/add-a-toy'>Add A Toy</Link></li>
+            <li><button onClick={handleLogout}>Logout</button></li>
         </>}
-        <li><Link to='/blogs'>Blogs</Link></li>
     </>
 
     return (
