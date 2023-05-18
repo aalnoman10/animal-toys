@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/toy.png';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const NavigationBar = () => {
-    const [user, setUser] = useState('')
+
+    const { user } = useContext(AuthContext)
 
     const li = <>
         <li><Link to='/'>Home</Link></li>

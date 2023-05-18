@@ -2,8 +2,25 @@ import { Link } from 'react-router-dom'
 import { BiUser } from 'react-icons/bi'
 import { AiOutlineMail } from 'react-icons/ai'
 import { SlLock } from 'react-icons/sl'
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Resister = () => {
+
+    const { user, setUser } = useContext(AuthContext)
+
+    const handleResister = e => {
+        e.preventDefault()
+
+        const form = e.target
+        const name = form.name.value
+        const email = form.email.value
+        const password = form.password.value
+        const photo = form.photo.value
+
+        console.log(name, email, password, photo);
+    }
+
     return (
         <div className="flex flex-col md:flex-row md:justify-evenly items-center bg-slate-100 p-8">
             <div className='px-8 md:px-0 py-4 md:py-0 order-2 md:order-1'>
@@ -12,7 +29,7 @@ const Resister = () => {
             </div>
             <div className='order-1 md:order-2'>
                 <div style={{ width: '350px' }} className="bg-white rounded-lg shadow-md p-3 hover:shadow-lg">
-                    <form>
+                    <form onSubmit={handleResister}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Name</span>
