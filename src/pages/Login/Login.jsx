@@ -1,9 +1,31 @@
 import { Link } from 'react-router-dom'
 import { BsGoogle, BsFacebook, BsGithub } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
+import { useContext } from 'react';
 import { SlLock } from 'react-icons/sl'
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
+    const { setUser, loginUser } = useContext(AuthContext)
+
+    const handleLogin = e => {
+        e.preventDefault()
+
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+
+        loginUser(email, password)
+            .then(result => {
+                const user = result.user
+                setUser(user)
+                console.log(user)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     return (
         <div className="flex flex-col md:flex-row md:justify-evenly items-center bg-slate-100 p-8">
             <div className='px-8 md:px-0 py-4 md:py-0 order-2 md:order-1'>
@@ -17,7 +39,7 @@ const Login = () => {
                 </div>
                 <div>
                     <div style={{ width: '350px' }} className="bg-white rounded-lg shadow-md p-3 hover:shadow-lg">
-                        <form>
+                        <form onSubmit={handleLogin}>
                             <h4 className="text-center text-2xl font-semibold">Email & Password</h4>
                             <div className="form-control">
                                 <label className="label">
@@ -25,7 +47,7 @@ const Login = () => {
                                 </label>
                                 <label className="input-group">
                                     <span><AiOutlineMail size={30} /></span>
-                                    <input type="email" placeholder="Example@gmail.com" className="input input-bordered w-full" />
+                                    <input type="email" name='email' placeholder="Example@gmail.com" className="input input-bordered w-full" />
                                 </label>
                             </div>
                             <div className="form-control mb-3">
@@ -34,7 +56,7 @@ const Login = () => {
                                 </label>
                                 <label className="input-group">
                                     <span><SlLock size={30} /></span>
-                                    <input type="Password" placeholder="Secret" className="input input-bordered w-full" />
+                                    <input type="password" name='password' placeholder="Secret" className="input input-bordered w-full" />
                                 </label>
                             </div>
                             <input type="submit" value='Login' className='w-full btn btn-info' />
