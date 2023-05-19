@@ -4,13 +4,64 @@ import { AiOutlineMail } from 'react-icons/ai'
 import { MdProductionQuantityLimits, MdOutlinePriceChange, MdOutlineDescription } from 'react-icons/md'
 import { BiCategoryAlt, BiEqualizer } from 'react-icons/bi'
 import { FcRating } from 'react-icons/fc'
+import { useContext } from 'react'
+import { AuthContext } from '../../Provider/AuthProvider'
 
 const AddAToy = () => {
+
+    const { user } = useContext(AuthContext)
+
+    const handleAddToy = (e) => {
+        e.preventDefault()
+
+        const form = e.target
+        const photo = form.photo.value
+        const toyName = form.toyName.value
+        const name = form.name.value
+        const email = form.email.value
+        const subCategory = form.subCategory.value
+        const price = form.price.value
+        const rating = form.rating.value
+        const quantity = form.quantity.value
+        const description = form.description.value
+
+        const newToy = {
+            photo,
+            toyName,
+            name,
+            email,
+            subCategory,
+            price,
+            rating,
+            quantity,
+            description
+        }
+
+        console.log(newToy);
+
+        fetch('http://localhost:5000/toys', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newToy)
+        })
+            .then((res) => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    console.log(data);
+                    alert('successful')
+                } else {
+                    alert('er')
+                }
+            })
+    }
+
     return (
         <div className="p-4">
             <h3 className="text-center text-4xl">Add A Toy</h3>
             <p className="text-center text-gray-500 py-3">Give all information for adding your toys </p>
-            <form className="bg-cyan-200 p-5 md:py-8 rounded-lg md:m-8">
+            <form onSubmit={handleAddToy} className="bg-cyan-200 p-5 md:py-8 rounded-lg md:m-8">
 
                 <div className="md:flex my-2">
                     {/* photo url */}
@@ -44,7 +95,7 @@ const AddAToy = () => {
                         </label>
                         <label className="input-group md:w-11/12 mx-auto">
                             <span><RiBriefcaseLine size={30} /></span>
-                            <input type="text" name='name' placeholder="seller name" className="input input-bordered w-full rounded" required />
+                            <input type="text" name='name' defaultValue={user?.displayName} placeholder="seller name" className="input input-bordered w-full rounded" required />
                         </label>
                     </div>
 
@@ -55,7 +106,7 @@ const AddAToy = () => {
                         </label>
                         <label className="input-group md:w-11/12 mx-auto">
                             <span><AiOutlineMail size={30} /></span>
-                            <input type="email" name='email' placeholder="example@gmail.com" className="input input-bordered w-full rounded" required />
+                            <input type="email" name='email' defaultValue={user?.email} placeholder="example@gmail.com" className="input input-bordered w-full rounded" required />
                         </label>
                     </div>
                 </div>
@@ -68,7 +119,7 @@ const AddAToy = () => {
                         </label>
                         <label className="input-group md:w-11/12 mx-auto">
                             <span><BiCategoryAlt size={30} /></span>
-                            <input type="text" name='SubCategory ' placeholder="Sub-category" className="input input-bordered w-full rounded" required />
+                            <input type="text" name='subCategory' placeholder="Sub-category" className="input input-bordered w-full rounded" required />
                         </label>
                     </div>
 

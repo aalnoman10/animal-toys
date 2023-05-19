@@ -10,18 +10,18 @@ const Tub = () => {
 
     useEffect(() => {
 
-        fetch('./lion.json')
+        fetch('http://localhost:5000/lions')
             .then(res => res.json())
             .then(data => {
                 setLionData(data)
                 console.log(data)
             })
 
-        fetch('./taiger.json')
+        fetch('http://localhost:5000/tigers')
             .then(res => res.json())
             .then(data => setTigerData(data))
 
-        fetch('./zebra.json')
+        fetch('http://localhost:5000/zebras')
             .then(res => res.json())
             .then(data => setZebraData(data))
 
@@ -41,7 +41,7 @@ const Tub = () => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         {
                             lionData.map(animal => <TabPanels
-                                key={animal.id}
+                                key={animal._id}
                                 animal={animal}
                             ></TabPanels>)
                         }
