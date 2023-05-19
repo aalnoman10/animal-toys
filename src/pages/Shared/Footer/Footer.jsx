@@ -1,5 +1,7 @@
 import logo from '../../../assets/toy.png';
 import { Link } from 'react-router-dom';
+import { SiFacebook, SiYoutube } from 'react-icons/si';
+import { AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 
 const Footer = () => {
 
@@ -25,10 +27,10 @@ const Footer = () => {
                     <div className='pb-5'>
                         <span className="footer-title text-center">social media</span>
                         <div>
-                            <button className='m-2'>F</button>
-                            <button className='m-2'>T</button>
-                            <button className='m-2'>L</button>
-                            <button className='m-2'>Y</button>
+                            <button className='m-2'><SiFacebook size={26} /></button>
+                            <button className='m-2'><AiFillInstagram size={26} /></button>
+                            <button className='m-2'><SiYoutube size={26} /></button>
+                            <button className='m-2'><AiFillLinkedin size={26} /></button>
                         </div>
                     </div>
                     <div>
