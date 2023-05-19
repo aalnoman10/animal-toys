@@ -7,6 +7,7 @@ import ErrorPage from "../Leyout/ErrorPage";
 import Login from "../pages/Login/Login";
 import Resister from "../pages/Login/Resister";
 import AddAToy from "../pages/AddAToy/AddAToy";
+import AllToys from "../pages/AllToys/AllToys";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: "/add-a-toy",
                 element: <AddAToy />
+            },
+            {
+                path: "/all-toys",
+                element: <AllToys />
             },
             {
                 path: "/login",
