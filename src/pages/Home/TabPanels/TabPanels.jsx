@@ -10,9 +10,9 @@ const TabPanels = ({ animal }) => {
                 </div>
                 <div className="flex justify-between md:flex-col items-end md:items-start md:h-[275px] w-full">
                     <div>
-                        <h4 className="font-semibold"><strong>Name : </strong>{name}</h4>
-                        <h4 className="font-semibold"><strong>price : </strong>$ {price}</h4>
-                        <h4 className="font-semibold"><strong>rating : </strong>{rating}</h4>
+                        <h4 className="font-bold text-2xl my-3">{name}</h4>
+                        <h4 className="font-semibold mb-1 text-xl"><span className="font-bold">price : </span>$ {price}</h4>
+                        <h4 className="font-semibold text-xl"><span className="font-bold">rating : </span>{rating}</h4>
                     </div>
                     <button className="btn btn-accent normal-case font-bold">View Details</button>
                 </div>
