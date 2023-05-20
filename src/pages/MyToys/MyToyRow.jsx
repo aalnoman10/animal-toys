@@ -2,9 +2,25 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
 
 const MyToyRow = ({ toys }) => {
-    const { price, name, toyName, photo, subCategory, quantity } = toys
+    const { _id, price, name, toyName, photo, subCategory, quantity } = toys
 
-    console.log(toys);
+    const handleDelete = (id) => {
+        const sureConfirm = confirm("Are you sure delete this item");
+        if (sureConfirm) {
+
+            fetch(`http://localhost:5000/toys/${id}`, {
+                method: "DELETE",
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('Item Delete Successful')
+                    }
+                }).catch(err => {
+                    alert(`item cen't delete ( ${err} )`)
+                })
+        }
+    }
 
     return (
         <tr>
@@ -15,7 +31,7 @@ const MyToyRow = ({ toys }) => {
             <td>$ {price}</td>
             <td>{quantity}</td>
             <td>
-                <button className="bg-slate-400 p-2 rounded-full text-white mb-2"><AiOutlineDelete size={20} /></button>
+                <button onClick={() => handleDelete(_id)} className="bg-slate-400 p-2 rounded-full text-white"><AiOutlineDelete size={20} /></button>
             </td>
             <td>
                 <button className="bg-slate-400 p-2 rounded-full text-white"><BiEdit size={20} /></button>

@@ -5,10 +5,12 @@ import MyToyRow from './myToyRow';
 const MyToys = () => {
 
     const [myToys, setMyToys] = useState([]);
-    const { user, loading } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     useEffect(() => {
+        if (!user?.email) {
+            return
+        }
         fetch(`http://localhost:5000/toys?email=${user?.email}`)
-            // fetch(`http://localhost:5000/toys`)
             .then(res => res.json())
             .then(data => setMyToys(data))
     }, [])
