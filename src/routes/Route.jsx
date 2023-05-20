@@ -9,6 +9,7 @@ import Resister from "../pages/Login/Resister";
 import AddAToy from "../pages/AddAToy/AddAToy";
 import AllToys from "../pages/AllToys/AllToys";
 import Blog from "../pages/Blog/Blog";
+import MyToys from "../pages/MyToys/MyToys";
 
 const router = createBrowserRouter([
     {
@@ -20,15 +21,19 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "/add-a-toy",
-                element: <AddAToy />
-            },
-            {
                 path: "/all-toys",
                 element: <AllToys />
             },
             {
-                path: "/blog",
+                path: "/add-a-toy",
+                element: <AddAToy />
+            },
+            {
+                path: "/my-toys",
+                element: <MyToys />
+            },
+            {
+                path: "/blogs",
                 element: <Blog />
             },
             {
@@ -40,7 +45,8 @@ const router = createBrowserRouter([
                 element: <Resister />
             },
         ]
-    }, {
+    },
+    {
         path: "*",
         element: <ErrorPage></ErrorPage>,
     }
