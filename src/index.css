@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+tbody tr:nth-child(2n-1)  td {
+    background-color: rgb(231, 231, 231);
+}
+
+tbody tr:nth-child(2n)  td {
+    background-color: rgb(239, 239, 239);
+}
