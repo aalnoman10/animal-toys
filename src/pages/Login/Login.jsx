@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { BsGoogle, BsFacebook, BsGithub } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
 import { useContext } from 'react';
@@ -7,6 +7,9 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
     const { setUser, loginUser, loginWithGoogle } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = e => {
         e.preventDefault()
@@ -19,6 +22,20 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 setUser(user)
+                navigate(from, { replace: true })
+                console.log(user)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then(result => {
+                const user = result.user
+                setUser(user)
+                navigate(from, { replace: true })
                 console.log(user)
             })
             .catch((error) => {
@@ -65,7 +82,7 @@ const Login = () => {
                             <hr className='mt-4' />
                             <h4 className="text-center text-2xl font-semibold">Continue with</h4>
                             <p className="flex justify-center items-center gap-2 py-2">
-                                <button onClick={loginWithGoogle} className="btn btn-ghost p-0 px-3"><BsGoogle size={25} /></button>
+                                <button onClick={handleGoogleLogin} className="btn btn-ghost p-0 px-3"><BsGoogle size={25} /></button>
                                 <button className="btn btn-ghost p-0 px-3"><BsGithub size={25} /></button>
                                 <button className="btn btn-ghost p-0 px-3"><BsFacebook size={25} /></button>
                             </p>

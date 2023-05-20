@@ -22,15 +22,7 @@ const AuthProvider = ({ children }) => {
 
     const loginWithGoogle = () => {
         setLoading(true)
-        signInWithPopup(auth, providerGoogle)
-            .then(result => {
-                const user = result.user
-                setUser(user)
-                console.log(user)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        return signInWithPopup(auth, providerGoogle)
     }
 
     useEffect(() => {
