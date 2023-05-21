@@ -19,7 +19,7 @@ const MyToys = () => {
 
     return (
         <div className='p-5'>
-            <h3 className="text-4xl text-center pb-4">All Toys</h3>
+            <h3 className="text-4xl text-center pb-4">My All Toys</h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>

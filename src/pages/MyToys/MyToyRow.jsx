@@ -16,10 +16,15 @@ const MyToyRow = ({ toys }) => {
                     if (data.deletedCount > 0) {
                         alert('Item Delete Successful')
                     }
+                    alert(`item cen't delete`)
                 }).catch(err => {
                     alert(`item cen't delete ( ${err} )`)
                 })
         }
+    }
+
+    const handleUpdate = () => {
+
     }
 
     return (
@@ -34,7 +39,7 @@ const MyToyRow = ({ toys }) => {
                 <button onClick={() => handleDelete(_id)} className="bg-slate-400 p-2 rounded-full text-white"><AiOutlineDelete size={20} /></button>
             </td>
             <td>
-                <button className="bg-slate-400 p-2 rounded-full text-white"><BiEdit size={20} /></button>
+                <button onClick={() => handleUpdate(_id)} className="bg-slate-400 p-2 rounded-full text-white"><BiEdit size={20} /></button>
             </td>
         </tr >
     );
