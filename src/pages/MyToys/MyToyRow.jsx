@@ -1,5 +1,6 @@
 import { AiOutlineDelete } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
+import { Link } from 'react-router-dom';
 
 const MyToyRow = ({ toys }) => {
     const { _id, price, name, toyName, photo, subCategory, quantity } = toys
@@ -17,14 +18,8 @@ const MyToyRow = ({ toys }) => {
                         alert('Item Delete Successful')
                     }
                     alert(`item cen't delete`)
-                }).catch(err => {
-                    alert(`item cen't delete ( ${err} )`)
                 })
         }
-    }
-
-    const handleUpdate = () => {
-
     }
 
     return (
@@ -39,7 +34,7 @@ const MyToyRow = ({ toys }) => {
                 <button onClick={() => handleDelete(_id)} className="bg-slate-400 p-2 rounded-full text-white"><AiOutlineDelete size={20} /></button>
             </td>
             <td>
-                <button onClick={() => handleUpdate(_id)} className="bg-slate-400 p-2 rounded-full text-white"><BiEdit size={20} /></button>
+                <Link to={`/my-toys/update/${_id}`}><button className="bg-slate-400 p-2 rounded-full text-white"><BiEdit size={20} /></button></Link>
             </td>
         </tr >
     );
