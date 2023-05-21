@@ -29,7 +29,7 @@ const PrivateRoute = ({ children }) => {
             </div>
         </div>
     }
-    return navigate('/login', { state: { from: location }, replace: true });
+    return navigate('/login', { state: { from: location } });
 };
 
 export default PrivateRoute;

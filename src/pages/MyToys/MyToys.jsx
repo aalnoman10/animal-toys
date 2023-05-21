@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import MyToyRow from './myToyRow';
+import { ToastError, ToastSuccess } from '../../main';
+import { Toaster } from 'react-hot-toast';
 
 const MyToys = () => {
 
@@ -15,10 +17,30 @@ const MyToys = () => {
             .then(data => setMyToys(data))
     }, [])
 
-    console.log(myToys);
+    const handleDelete = (id) => {
+        const sureConfirm = confirm("Are you sure delete this item");
+        if (sureConfirm) {
+
+            fetch(`https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/toys/${id}`, {
+                method: "DELETE",
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        ToastSuccess('Item Delete Successful')
+                        const ramming = myToys.filter(toy => toy._id !== id)
+                        setMyToys(ramming)
+                    }
+                    else {
+                        ToastError()
+                    }
+                })
+        }
+    }
 
     return (
         <div className='p-5'>
+            <Toaster />
             <h3 className="text-4xl text-center pb-4">My All Toys</h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -38,6 +60,7 @@ const MyToys = () => {
                         {myToys.map(toys => <MyToyRow
                             key={toys._id}
                             toys={toys}
+                            handleDelete={handleDelete}
                         ></MyToyRow>)}
                     </tbody>
 

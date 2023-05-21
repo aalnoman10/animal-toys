@@ -14,7 +14,6 @@ const Tub = () => {
             .then(res => res.json())
             .then(data => {
                 setLionData(data)
-                console.log(data)
             })
 
         fetch('https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/tigers')

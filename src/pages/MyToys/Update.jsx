@@ -7,6 +7,9 @@ import { FcRating } from 'react-icons/fc'
 import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 import { useLoaderData } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
+import { ToastError, ToastSuccess } from '../../main'
+
 
 const Update = () => {
 
@@ -38,15 +41,19 @@ const Update = () => {
             .then((res) => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('successful')
+                    ToastSuccess('Update Information Successful')
                 } else {
-                    alert('er')
+                    ToastError()
                 }
+            })
+            .catch(() => {
+                ToastError()
             })
     }
 
     return (
         <div className="p-4">
+            <Toaster />
             <h3 className="text-center text-4xl p-6">Update Toy</h3>
             <form onSubmit={handleUpdateToy} className="bg-cyan-200 p-5 md:py-8 rounded-lg md:m-8">
 

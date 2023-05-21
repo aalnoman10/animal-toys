@@ -6,6 +6,8 @@ import { BiCategoryAlt, BiEqualizer } from 'react-icons/bi'
 import { FcRating } from 'react-icons/fc'
 import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
+import { ToastError, ToastSuccess } from '../../main'
+import { Toaster } from 'react-hot-toast'
 
 const AddAToy = () => {
 
@@ -37,8 +39,6 @@ const AddAToy = () => {
             description
         }
 
-        console.log(newToy);
-
         fetch('https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/toys', {
             method: "POST",
             headers: {
@@ -49,16 +49,16 @@ const AddAToy = () => {
             .then((res) => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    console.log(data);
-                    alert('successful')
+                    ToastSuccess("POST Successful")
                 } else {
-                    alert('er')
+                    ToastError()
                 }
             })
     }
 
     return (
         <div className="p-4">
+            <Toaster />
             <h3 className="text-center text-4xl">Add A Toy</h3>
             <p className="text-center text-gray-500 py-3">Give all information for adding your toys </p>
             <form onSubmit={handleAddToy} className="bg-cyan-200 p-5 md:py-8 rounded-lg md:m-8">

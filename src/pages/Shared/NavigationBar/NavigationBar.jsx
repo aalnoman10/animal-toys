@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/toy.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { ToastError, ToastSuccess } from '../../../main';
+import { Toaster } from 'react-hot-toast';
 
 const NavigationBar = () => {
 
@@ -10,11 +12,11 @@ const NavigationBar = () => {
     const handleLogout = () => {
         logout()
             .then(() => {
-                console.log('success');
+                ToastSuccess("user logout successful")
                 setUser(null)
             })
             .catch((error) => {
-                console.log(error);
+                ToastError()
             })
     }
 
@@ -31,6 +33,7 @@ const NavigationBar = () => {
 
     return (
         <div className="navbar bg-slate-500 text-white">
+            <Toaster />
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
