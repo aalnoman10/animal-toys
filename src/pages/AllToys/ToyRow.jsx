@@ -1,22 +1,19 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Details from './Details';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 const ToyRow = ({ toys }) => {
     const navigate = useNavigate()
     const { user } = useContext(AuthContext)
     const location = useLocation()
 
-    const { _id, price, name, toyName, subCategory, quantity } = toys
-
-    console.log(toys);
+    const { price, name, toyName, subCategory, quantity } = toys
 
     const handleCheckUser = () => {
         if (!user) {
             alert('please login')
+            return navigate('/login', { state: { from: location } }, { replace: true })
         }
-        return !user && navigate('/login', { state: { from: location } }, { replace: true })
     }
 
     return (
@@ -26,18 +23,7 @@ const ToyRow = ({ toys }) => {
             <td>{subCategory}</td>
             <td>$ {price}</td>
             <td>{quantity}</td>
-            <td><label onClick={handleCheckUser} htmlFor="my-modal-5" className="btn btn-info font-semibold">Details</label></td>
-            {user && <>
-                <input type="checkbox" id="my-modal-5" className="modal-toggle" />
-                <div className="modal">
-                    <div className="modal-box w-11/12 max-w-5xl">
-                        <Details toys={toys} />
-                        <div className="modal-action">
-                            <label htmlFor="my-modal-5" className="btn">Close</label>
-                        </div>
-                    </div>
-                </div></>
-            }
+            <td><button onClick={handleCheckUser}><Link to={`/all-toys/details/${toys._id}`} className="btn btn-info font-semibold">Details</Link></button></td>
         </tr>
     );
 };
