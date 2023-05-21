@@ -10,18 +10,18 @@ const Tub = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/lions')
+        fetch('https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/lions')
             .then(res => res.json())
             .then(data => {
                 setLionData(data)
                 console.log(data)
             })
 
-        fetch('http://localhost:5000/tigers')
+        fetch('https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/tigers')
             .then(res => res.json())
             .then(data => setTigerData(data))
 
-        fetch('http://localhost:5000/zebras')
+        fetch('https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/zebras')
             .then(res => res.json())
             .then(data => setZebraData(data))
 

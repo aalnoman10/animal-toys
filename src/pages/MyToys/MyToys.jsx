@@ -10,7 +10,7 @@ const MyToys = () => {
         if (!user?.email) {
             return
         }
-        fetch(`http://localhost:5000/toys?email=${user?.email}`)
+        fetch(`https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/toys?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setMyToys(data))
     }, [])
