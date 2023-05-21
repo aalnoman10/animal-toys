@@ -9,7 +9,7 @@ const MyToyRow = ({ toys }) => {
         const sureConfirm = confirm("Are you sure delete this item");
         if (sureConfirm) {
 
-            fetch(`http://localhost:5000/toys/${id}`, {
+            fetch(`https://b7a11-toy-marketplace-server-side-aalnoman10.vercel.app/toys/${id}`, {
                 method: "DELETE",
             })
                 .then(res => res.json())
