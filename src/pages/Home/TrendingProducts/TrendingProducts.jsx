@@ -11,8 +11,6 @@ const TrendingProducts = () => {
             .then(data => setProducts(data))
     }, [])
 
-    console.log(products);
-
     return (
         <div className='bg-slate-200 py-8'>
             <h3 className="text-center text-3xl font-semibold pb-2">Trending Products</h3>

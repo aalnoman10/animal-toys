@@ -30,7 +30,7 @@ const AllToys = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {allToys.map(toys => <ToyRow
+                        {allToys.slice(0, 20).map(toys => <ToyRow
                             key={toys._id}
                             toys={toys}
                         ></ToyRow>)}
