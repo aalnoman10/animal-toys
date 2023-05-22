@@ -50,7 +50,7 @@ const Tub = () => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         {
                             tigerData.map(animal => <TabPanels
-                                key={animal.id}
+                                key={animal._id}
                                 animal={animal}
                             ></TabPanels>)
                         }
@@ -60,7 +60,7 @@ const Tub = () => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         {
                             zebraData.map(animal => <TabPanels
-                                key={animal.id}
+                                key={animal._id}
                                 animal={animal}
                             ></TabPanels>)
                         }

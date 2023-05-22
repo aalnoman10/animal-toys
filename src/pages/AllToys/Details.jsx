@@ -1,4 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
+import CustomHelmet from '../Helmet/Helmet';
 
 const Details = () => {
     const data = useLoaderData()
@@ -6,6 +7,7 @@ const Details = () => {
 
     return (
         <div className='py-8 w-11/12 md:w-3/4 mx-auto'>
+            <CustomHelmet title='| All-Toys | Details'></CustomHelmet>
             <h3 className="font-bold text-lg text-center pb-6">{toyName} - Details</h3>
             <div className="grid md:grid-cols-2">
                 <div className="grid place-items-center pb-2 md:pb-0 md:gap-2">

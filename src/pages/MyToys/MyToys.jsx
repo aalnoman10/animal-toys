@@ -3,6 +3,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import MyToyRow from './myToyRow';
 import { ToastError, ToastSuccess } from '../../main';
 import { Toaster } from 'react-hot-toast';
+import CustomHelmet from '../Helmet/Helmet';
 
 const MyToys = () => {
 
@@ -41,6 +42,7 @@ const MyToys = () => {
     return (
         <div className='p-5'>
             <Toaster />
+            <CustomHelmet title='| My-Toys'></CustomHelmet>
             <h3 className="text-4xl text-center pb-4">My All Toys</h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

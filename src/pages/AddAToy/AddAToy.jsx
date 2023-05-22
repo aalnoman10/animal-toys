@@ -8,6 +8,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 import { ToastError, ToastSuccess } from '../../main'
 import { Toaster } from 'react-hot-toast'
+import CustomHelmet from '../Helmet/Helmet'
 
 const AddAToy = () => {
 
@@ -59,6 +60,7 @@ const AddAToy = () => {
     return (
         <div className="p-4">
             <Toaster />
+            <CustomHelmet title='| Add-Toy'></CustomHelmet>
             <h3 className="text-center text-4xl">Add A Toy</h3>
             <p className="text-center text-gray-500 py-3">Give all information for adding your toys </p>
             <form onSubmit={handleAddToy} className="bg-cyan-200 p-5 md:py-8 rounded-lg md:m-8">

@@ -1,8 +1,10 @@
 import React from 'react';
+import CustomHelmet from '../Helmet/Helmet';
 
 const Blog = () => {
     return (
         <div className='p-5'>
+            <CustomHelmet title='| Blog'></CustomHelmet>
             <h1 className="text-3xl text-center py-4 pt-0 font-semibold">Important Question</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <div className='bg-base-300 p-4 rounded-lg'>

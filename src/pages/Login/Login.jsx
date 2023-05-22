@@ -6,6 +6,7 @@ import { SlLock } from 'react-icons/sl'
 import { AuthContext } from '../../Provider/AuthProvider';
 import { ToastError, ToastSuccess } from '../../main';
 import { Toaster } from 'react-hot-toast';
+import CustomHelmet from '../Helmet/Helmet';
 
 const Login = () => {
     const { setUser, loginUser, loginWithGoogle } = useContext(AuthContext)
@@ -48,6 +49,7 @@ const Login = () => {
     return (
         <div className="flex flex-col md:flex-row md:justify-evenly items-center bg-slate-100 p-8">
             < Toaster />
+            <CustomHelmet title='| Login'></CustomHelmet>
             <div className='px-8 md:px-0 py-4 md:py-0 order-2 md:order-1'>
                 <h3 className="text-3xl">Animal Toys</h3>
                 <p>This is the best Market selling animal toys. Login now to subscribe</p>
