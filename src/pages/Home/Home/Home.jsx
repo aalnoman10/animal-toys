@@ -3,6 +3,7 @@ import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
 import Tub from "../Tub/Tub";
 import CustomHelmet from "../../Helmet/Helmet";
+import TrendingProducts from "../TrendingProducts/TrendingProducts";
 // import Aos from "aos";
 // import "aos/dist/aos.css";
 
@@ -17,6 +18,7 @@ const Home = () => {
             <Banner data-aos="fade-up" />
             <Gallery data-aos="fade-up" />
             <Tub data-aos="fade-up" />
+            <TrendingProducts data-aos="fade-up" />
         </div>
     );
 };
